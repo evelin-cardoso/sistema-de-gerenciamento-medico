@@ -1,0 +1,48 @@
+-- Criação da tabela de Médicos
+CREATE TABLE medicos (
+    id_medico INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    especialidade VARCHAR(100),
+    telefone VARCHAR(15),
+    email VARCHAR(100)
+);
+
+-- Criação da tabela de Pacientes
+CREATE TABLE pacientes (
+    id_paciente INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    data_nascimento DATE,
+    telefone VARCHAR(15),
+    email VARCHAR(100),
+    endereco VARCHAR(255)
+);
+
+-- Criação da tabela de Consultas
+CREATE TABLE consultas (
+    id_consulta INT AUTO_INCREMENT PRIMARY KEY,
+    id_medico INT,
+    id_paciente INT,
+    data_consulta DATE,
+    horario TIME,
+    status VARCHAR(50) DEFAULT 'Agendada',
+    FOREIGN KEY (id_medico) REFERENCES medicos(id_medico),
+    FOREIGN KEY (id_paciente) REFERENCES pacientes(id_paciente)
+);
+
+-- Inserção de dados fictícios na tabela Médicos
+INSERT INTO medicos (nome, especialidade, telefone, email) VALUES
+('Dr. João Silva', 'Cardiologia', '(48) 99999-1111', 'joao.silva@hospital.com'),
+('Dra. Maria Oliveira', 'Dermatologia', '(48) 99999-2222', 'maria.oliveira@hospital.com'),
+('Dr. Pedro Santos', 'Ortopedia', '(48) 99999-3333', 'pedro.santos@hospital.com');
+
+-- Inserção de dados fictícios na tabela Pacientes
+INSERT INTO pacientes (nome, data_nascimento, telefone, email, endereco) VALUES
+('Ana Costa', '1990-05-10', '(48) 88888-4444', 'ana.costa@exemplo.com', 'Rua A, 123, Centro, Florianópolis'),
+('Carlos Ferreira', '1985-12-20', '(48) 88888-5555', 'carlos.ferreira@exemplo.com', 'Rua B, 456, Centro, Florianópolis'),
+('Luciana Lima', '1995-03-15', '(48) 88888-6666', 'luciana.lima@exemplo.com', 'Rua C, 789, Centro, Florianópolis');
+
+-- Inserção de dados fictícios na tabela Consultas
+INSERT INTO consultas (id_medico, id_paciente, data_consulta, horario, status) VALUES
+(1, 1, '2024-11-01', '10:00:00', 'Agendada'),
+(2, 2, '2024-11-02', '11:00:00', 'Agendada'),
+(3, 3, '2024-11-03', '12:00:00', 'Agendada');
