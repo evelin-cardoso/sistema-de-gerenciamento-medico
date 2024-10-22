@@ -1,0 +1,68 @@
+ Sistema de Gerenciamento de Consultas Médicas
+
+Este projeto é um sistema simples de gerenciamento de consultas médicas, desenvolvido como parte do curso Técnico em Desenvolvimento de Sistemas. O sistema permite o cadastro de médicos, pacientes e a marcação de consultas.
+
+Funcionalidades
+
+- Cadastro de médicos
+- Cadastro de pacientes
+- Agendamento de consultas
+- Status da consulta (Agendada, Concluída, Cancelada)
+
+ Estrutura do Banco de Dados
+
+O sistema utiliza três tabelas principais:
+
+- **medicos**: Armazena informações dos médicos, como nome, especialidade, telefone e e-mail.
+- **pacientes**: Armazena informações dos pacientes, incluindo nome, data de nascimento, telefone, e-mail e endereço.
+- **consultas**: Registra as consultas agendadas, vinculando médicos e pacientes, além da data, horário e status da consulta.
+
+ Estrutura das Tabelas
+
+Tabela Médicos (`medicos`)
+
+| Campo         | Tipo        | Descrição                           |
+|---------------|-------------|-------------------------------------|
+| `id_medico`   | INT         | Identificador único do médico       |
+| `nome`        | VARCHAR(100)| Nome do médico                      |
+| `especialidade`| VARCHAR(100)| Especialidade do médico             |
+| `telefone`    | VARCHAR(15) | Telefone de contato                 |
+| `email`       | VARCHAR(100)| E-mail do médico                    |
+
+ Tabela Pacientes (`pacientes`)
+
+| Campo             | Tipo        | Descrição                          |
+|-------------------|-------------|------------------------------------|
+| `id_paciente`     | INT         | Identificador único do paciente    |
+| `nome`            | VARCHAR(100)| Nome do paciente                   |
+| `data_nascimento` | DATE        | Data de nascimento do paciente     |
+| `telefone`        | VARCHAR(15) | Telefone de contato                |
+| `email`           | VARCHAR(100)| E-mail do paciente                 |
+| `endereco`        | VARCHAR(255)| Endereço do paciente               |
+
+ Tabela Consultas (`consultas`)
+
+| Campo           | Tipo        | Descrição                           |
+|-----------------|-------------|-------------------------------------|
+| `id_consulta`   | INT         | Identificador único da consulta     |
+| `id_medico`     | INT         | Referência ao médico responsável    |
+| `id_paciente`   | INT         | Referência ao paciente da consulta  |
+| `data_consulta` | DATE        | Data da consulta                    |
+| `horario`       | TIME        | Horário da consulta                 |
+| `status`        | VARCHAR(50) | Status da consulta (Agendada, Concluída, Cancelada) |
+
+Como Usar
+
+1. Clone o repositório.
+2. Execute o script SQL para criar as tabelas e adicionar os dados fictícios.
+3. Conecte-se ao banco de dados e execute as consultas conforme necessário para gerenciar médicos, pacientes e consultas.
+
+ Tecnologias Utilizadas
+
+- MySQL
+- SQL para manipulação de banco de dados
+
+Contato
+
+Projeto desenvolvido por Evelin. Para mais informações, entre em contato via cienciadedados.evelin@gmail.com.
+
